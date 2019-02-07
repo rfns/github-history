@@ -12,8 +12,9 @@ export function isLoggedIn() {
 }
 
 async function getContent(repo, sha, path) {
+  const encodedPath = encodeURIComponent(path)
   const contentResponse = await fetch(
-    `https://api.github.com/repos/${repo}/contents${path}?ref=${sha}`,
+    `https://api.github.com/repos/${repo}/contents${encodedPath}?ref=${sha}`,
     { headers: getHeaders() }
   );
 
